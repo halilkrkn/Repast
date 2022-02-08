@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.repast.R
 import com.example.repast.databinding.FragmentCartListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class CartListFragment : Fragment() {
     private lateinit var binding: FragmentCartListBinding
     override fun onCreateView(

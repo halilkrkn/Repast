@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.repast.R
 import com.example.repast.databinding.FragmentFavoriteFoodBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class FavoriteFoodFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoriteFoodBinding

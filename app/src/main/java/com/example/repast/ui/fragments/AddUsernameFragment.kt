@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.repast.R
 import com.example.repast.databinding.FragmentAddUsernameBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddUsernameFragment : Fragment() {
 
     private lateinit var binding: FragmentAddUsernameBinding
