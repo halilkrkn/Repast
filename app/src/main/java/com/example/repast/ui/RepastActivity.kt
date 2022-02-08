@@ -34,8 +34,6 @@ class RepastActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.foodListFragment, R.id.cartListFragment, R.id.favoriteFoodFragment ->
                     binding.bottomNavigationView.visibility = View.VISIBLE
-                R.id.foodDetailFragment ->
-                    binding.bottomNavigationView.visibility = View.VISIBLE
                 else -> binding.bottomNavigationView.visibility = View.GONE
             }
         }

@@ -3,56 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/purple_200">
-
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:text="Welcome!\nPlease enter your name and weight."
-        android:textAlignment="center"
-        android:textDirection="firstStrong"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etName"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/text_input_edit_setup"
-            android:ems="10"
-            android:hint="Your Name"
-            android:inputType="textPersonName" />
+    android:layout_height="match_parent">
 
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/buttonGoFoodList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go to Food List"
-        app:cornerRadius="15dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/repast"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilName" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/buttonGoToFoodList"
+        android:layout_width="161dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/text_input_edit_setup"
+        android:text="Go To Food List"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="16sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="143dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/text_input_edit_setup"
+        android:hint="Username"
+        android:textColor="#5D6564"
+        android:textColorHighlight="@color/white"
+        android:inputType="textPersonName"
+        android:paddingLeft="35dp"
+        android:textColorHint="#5D6564"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonGoToFoodList"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

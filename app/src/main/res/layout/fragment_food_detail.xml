@@ -7,10 +7,76 @@
     tools:context=".ui.fragments.FoodDetailFragment">
 
 
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewFoodDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Title"
+                android:textAlignment="center"
+                android:textColor="@color/DetailFoodTitle"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageViewFoodDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/pizza_resim" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/buttonMinus"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/minus" />
+
+                <TextView
+                    android:id="@+id/textViewNumberOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/DetailFoodTitle"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/buttonPlus"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/plus" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarDetail"
+        android:id="@+id/toolbarFoodDetail"
         android:layout_width="0dp"
-        app:title="Detail Food"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -18,19 +84,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Detail Food" />
 
     <TextView
-        android:id="@+id/textViewFavori"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="336dp"
-        android:text="Detail Food Screen"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/textViewFoodDetailPriceIcon"
+        android:layout_width="33dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:gravity="center"
+        android:text="₺"
+        android:textColor="@color/DetailFoodTitle"
+        android:textSize="28sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewFoodDetailPrice"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+
+    <TextView
+        android:id="@+id/textViewFoodDetailPrice"
+        android:layout_width="92dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
+        android:gravity="center"
+        android:text="15.99"
+        android:textColor="@color/DetailFoodCurrency"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAddToCart"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarDetail"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+
+    <Button
+        android:id="@+id/buttonAddToCart"
+        android:layout_width="186dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/text_input_edit_setup"
+        android:text="Add To Cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
