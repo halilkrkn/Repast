@@ -17,9 +17,9 @@ class FoodListFragment : Fragment() {
     ): View? {
         binding = FragmentFoodListBinding.inflate(inflater, container, false)
 
-        binding.buttonGoToFoodDetail.setOnClickListener{
-            Navigation.findNavController(it).navigate(R.id.action_foodListFragment_to_foodDetailFragment)
-        }
+//        binding.buttonGoToFoodDetail.setOnClickListener{
+//            Navigation.findNavController(it).navigate(R.id.action_foodListFragment_to_foodDetailFragment)
+//        }
 
 
         return binding.root

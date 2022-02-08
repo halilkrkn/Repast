@@ -19,7 +19,7 @@ class AddUsernameFragment : Fragment() {
         binding = FragmentAddUsernameBinding.inflate(inflater, container, false)
 
 
-        binding.buttonGoFoodList.setOnClickListener{
+        binding.buttonGoToFoodList.setOnClickListener{
             Navigation.findNavController(it).navigate(R.id.action_addUsernameFragment_to_foodListFragment)
         }
 
