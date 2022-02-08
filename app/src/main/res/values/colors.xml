@@ -13,6 +13,9 @@
     <color name="usernameButtonColor">#ee2644</color>
     <color name = "DetailFoodTitle">#373b54</color>
     <color name = "DetailFoodCurrency">#ff5e00</color>
+    <color name="mainColor">#fffaf0</color>
+    <color name="mainColor2">#f6f6ea</color>
+    <color name="usernameEditTextColor">#f9d291</color>
 
 
 </resources>

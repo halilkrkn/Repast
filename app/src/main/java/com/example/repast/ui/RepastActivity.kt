@@ -10,7 +10,9 @@ import androidx.navigation.ui.NavigationUI
 import com.example.repast.R
 import com.example.repast.databinding.ActivityRepastBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RepastActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRepastBinding
 
