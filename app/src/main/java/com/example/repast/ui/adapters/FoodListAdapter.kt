@@ -2,6 +2,7 @@ package com.example.repast.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -33,6 +34,13 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_baseline_hide_image_24)
                     .into(imageViewFoodList)
+
+                itemFoodListCartView.setOnClickListener {
+                    val action = R.id.action_foodListFragment_to_foodDetailFragment
+                        Navigation.findNavController(it).navigate(action)
+                }
+
+
             }
         }
 

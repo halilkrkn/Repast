@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/itemFoodListCartView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
@@ -16,6 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/mainColor"
             android:layout_height="match_parent">
 
 
@@ -27,40 +29,63 @@
                 android:lines="2"
                 android:paddingStart="7dp"
                 android:text="Kategori Baslik"
-                android:textColor="@color/black"
+                android:textColor="@color/DetailFoodTitle"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/textViewFoodListPrice"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/textViewFoodListPrice"
-                android:layout_width="139dp"
-                android:layout_height="49dp"
-                android:gravity="center"
-                android:lines="2"
-                android:paddingStart="7dp"
-                android:text="15.99TL"
-                android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/imageViewFoodList"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textViewFoodName"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageViewFoodList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="220dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_foreground"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewFoodName"
                 app:shapeAppearanceOverlay="@style/circleImageViewStyle" />
+
+            <TextView
+                android:id="@+id/textViewFoodListPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:gravity="center"
+                android:lines="2"
+                android:paddingStart="7dp"
+                android:text="15.99"
+                android:textColor="@color/DetailFoodCurrency"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewFoodList"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textViewFoodListTL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:lines="2"
+                android:paddingStart="7dp"
+                android:text="₺"
+                android:textColor="@color/DetailFoodCurrency"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewFoodListPrice"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewFoodList"
+                app:layout_constraintVertical_bias="0.0" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
