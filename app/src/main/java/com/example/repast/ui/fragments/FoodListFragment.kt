@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.repast.R
@@ -23,24 +25,20 @@ class FoodListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFoodListBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_food_list,container, false)
+        binding.foodListFragment = this
+        binding.foodListToolBarBaslik = "Food List"
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarFoodList)
 
-//        binding.buttonGoToFoodDetail.setOnClickListener{
-//            Navigation.findNavController(it).navigate(R.id.action_foodListFragment_to_foodDetailFragment)
-//        }
-// RecyclerView Adapter Tanımlandı.
-        adapterFoodList = FoodListAdapter()
-        binding.apply {
-            recyclerViewFoodList.setHasFixedSize(true)
-            // LoadStateAdapter da oluşturmuş olduğumuz hata görüntüsünü recyclerview de göstermek için adapter.withLoadStateHeaderAndFooter methodunu kullanıyoruz.
-            // Böylelikle hata mesajımız olan desingımız recyclerviewın hem header hemde footer kısmında gözükmektedir.
-            recyclerViewFoodList.adapter = adapterFoodList
-        }
+
 
 
         // viewmodel içerisinde tanımlanmış olan tidings değişkenini çağırdık.
         viewModel.foodList.observe(viewLifecycleOwner) {
+            adapterFoodList = FoodListAdapter()
             adapterFoodList.differ.submitList(it)
+            binding.foodListAdapter = adapterFoodList
+            binding.recyclerViewFoodList.setHasFixedSize(true)
         }
 
         return binding.root

@@ -2,28 +2,35 @@ package com.example.repast.data.model
 
 
 import android.os.Parcelable
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class SepetYemekler(
 
-    @SerializedName("kullanici_adi")
-    val kullaniciAdi: String,
-
-    @SerializedName("sepet_yemek_id")
-    val sepetYemekİd: String,
-
     @SerializedName("yemek_adi")
-    val yemekAdi: String,
-
-    @SerializedName("yemek_fiyat")
-    val yemekFiyat: String,
+    @Expose
+    val yemek_adi: String,
 
     @SerializedName("yemek_resim_adi")
-    val yemekResimAdi: String,
+    @Expose
+    val yemek_resim_adi: String,
+
+    @SerializedName("kullanici_adi")
+    @Expose
+    val kullanici_adi: String,
+
+    @SerializedName("yemek_fiyat")
+    @Expose
+    val yemek_fiyat: String,
 
     @SerializedName("yemek_siparis_adet")
-    val yemekSiparisAdet: String
+    @Expose
+    val yemek_siparis_adet: String,
+
+    @SerializedName("sepet_yemek_id")
+    @Expose
+    val sepet_yemek_id: String
 
 ) : Parcelable

@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/repast"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.AddUsernameFragment">
 
-    <Button
-        android:id="@+id/buttonGoToFoodList"
-        android:layout_width="161dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/text_input_edit_setup"
-        android:text="Go To Food List"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="16sp"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/repast"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="143dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/text_input_edit_setup"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:paddingLeft="35dp"
-        android:textColor="#5D6564"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#5D6564"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonGoToFoodList"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/buttonGoToFoodList"
+            android:layout_width="161dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/text_input_edit_setup"
+            android:text="Go To Food List"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="16sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="143dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/text_input_edit_setup"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:paddingLeft="35dp"
+            android:textColor="#5D6564"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="#5D6564"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonGoToFoodList"
+            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

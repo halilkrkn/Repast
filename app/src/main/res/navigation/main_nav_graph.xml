@@ -27,7 +27,11 @@
         android:id="@+id/foodDetailFragment"
         android:name="com.example.repast.ui.fragments.FoodDetailFragment"
         android:label="fragment_food_detail"
-        tools:layout="@layout/fragment_food_detail" />
+        tools:layout="@layout/fragment_food_detail" >
+        <argument
+            android:name="yemekler"
+            app:argType="com.example.repast.data.model.Yemekler" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFoodFragment"
         android:name="com.example.repast.ui.fragments.FavoriteFoodFragment"

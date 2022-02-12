@@ -3,7 +3,6 @@ package com.example.repast.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.repast.R
 import com.example.repast.data.model.Yemekler
-import com.example.repast.databinding.ItemCartListBinding
 import com.example.repast.databinding.ItemFoodListBinding
 import com.example.repast.utils.Constants.Companion.IMAGE_URL
 
@@ -22,11 +20,10 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>
     inner class FoodListViewHolder(private val binding: ItemFoodListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(foods: Yemekler) {
+        fun bind(yemekler: Yemekler) {
             binding.apply {
-                val imageAdi = "${IMAGE_URL}${foods.yemek_resim_adi}"
-                textViewFoodName.text = foods.yemek_adi
-                textViewFoodListPrice.text = foods.yemek_fiyat
+                foodss = yemekler
+                val imageAdi = "${IMAGE_URL}${yemekler.yemek_resim_adi}"
                 Glide.with(itemView)
                     .load(imageAdi)
                     .override(200,200)
@@ -35,15 +32,12 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>
                     .error(R.drawable.ic_baseline_hide_image_24)
                     .into(imageViewFoodList)
 
-                itemFoodListCartView.setOnClickListener {
+                itemFoodListCardView.setOnClickListener {
                     val action = R.id.action_foodListFragment_to_foodDetailFragment
                         Navigation.findNavController(it).navigate(action)
                 }
-
-
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodListViewHolder {
@@ -64,7 +58,6 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>
     // DiffUtil, RecyclerView adapterındaki verilerin daha verimli bir şekilde güncellenmesi için kullanılır.
     //  RecyclerView’daki veriyi güncellemek veya filtreleme ihtiyacımız olabiliyor. En verimlli yöntem DiffUtili kulanmaktır.
     //   DiffUtil iki liste arasındaki farkı hesaplayıp bize güncel listeyi veren bir utility sınıfıdır. DiffUtil iki listeyi karşılaştırıp minimum güncelleme sayısını hesaplamak için Eugene W. Myers‘in fark algoritmasını kullanıyor.
-
     private val differCallback = object : DiffUtil.ItemCallback<Yemekler>() {
 
         override fun areItemsTheSame(
@@ -83,6 +76,4 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>
     }
 
     val differ = AsyncListDiffer(this, differCallback)
-
-
 }
