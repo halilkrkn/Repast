@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.repast.R
 import com.example.repast.data.model.Yemekler
 import com.example.repast.databinding.ItemFoodListBinding
+import com.example.repast.ui.fragments.FoodListFragmentDirections
 import com.example.repast.utils.Constants.Companion.IMAGE_URL
 
 class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>() {
@@ -33,7 +34,7 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.FoodListViewHolder>
                     .into(imageViewFoodList)
 
                 itemFoodListCardView.setOnClickListener {
-                    val action = R.id.action_foodListFragment_to_foodDetailFragment
+                    val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(yemekler)
                         Navigation.findNavController(it).navigate(action)
                 }
             }

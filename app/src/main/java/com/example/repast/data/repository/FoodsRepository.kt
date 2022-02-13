@@ -16,14 +16,10 @@ class FoodsRepository @Inject constructor(
 ) {
 
     var foodLists: MutableLiveData<List<Yemekler>> = MutableLiveData()
-    var foodDetail: MutableLiveData<Yemekler> = MutableLiveData()
+
 
     fun getFoods(): MutableLiveData<List<Yemekler>>{
         return foodLists
-    }
-
-    fun getFoodsDetail():  MutableLiveData<Yemekler>{
-        return foodDetail
     }
 
     fun getAllFoods(){
@@ -35,15 +31,5 @@ class FoodsRepository @Inject constructor(
             override fun onFailure(call: Call<YemekResponse>, t: Throwable) {}
         })
     }
-
-    fun yemekleriAl() = foodsApi.getFoodsDetail().enqueue(object: Callback<Yemekler>{
-        override fun onResponse(call: Call<Yemekler>, response: Response<Yemekler>) {
-            val yemekler = response.body()
-            foodDetail.value = yemekler!!
-        }
-
-        override fun onFailure(call: Call<Yemekler>, t: Throwable) {}
-
-    })
 
 }

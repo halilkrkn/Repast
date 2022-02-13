@@ -12,19 +12,5 @@ class FoodDetailViewModel @Inject constructor(
     val repository: FoodsRepository
 ):ViewModel(){
 
-    var foodDetail= MutableLiveData<Yemekler>()
-
-    init {
-        getAllFoods()
-        foodDetail = repository.getFoodsDetail()
-    }
-//
-//    fun getAllFoods() = viewModelScope.launch(Dispatchers.Main){
-//        foodList.value = repository.getAllFoods()
-//    }
-
-    fun getAllFoods(){
-        repository.yemekleriAl()
-    }
 
 }
