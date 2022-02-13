@@ -44,7 +44,12 @@ class FoodDetailFragment : Fragment() {
                 .into(imageViewFoodDetail)
 
             textViewFoodDetailTitle.text = foodDetail.yemek_adi
-            textViewFoodDetailPrice.text = foodDetail.yemek_fiyat.toString()
+            textViewFoodDetailPrice.text = foodDetail.yemek_fiyat
+
+
+            buttonAddToCart.setOnClickListener {
+                viewModel.postAddFoodsCard(foodDetail.yemek_adi,foodDetail.yemek_resim_adi,foodDetail.yemek_fiyat.toInt(),2,"halil_krkn_ooo")
+            }
         }
 
         return binding.root
