@@ -18,6 +18,7 @@ import com.example.repast.R
 import com.example.repast.databinding.FragmentFoodDetailBinding
 import com.example.repast.ui.viewmodels.FoodDetailViewModel
 import com.example.repast.utils.Constants
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,7 +49,8 @@ class FoodDetailFragment : Fragment() {
 
 
             buttonAddToCart.setOnClickListener {
-                viewModel.postAddFoodsCard(foodDetail.yemek_adi,foodDetail.yemek_resim_adi,foodDetail.yemek_fiyat.toInt(),2,"halil_krkn_ooo")
+                viewModel.postAddFoodsCard(foodDetail.yemek_adi,foodDetail.yemek_resim_adi,foodDetail.yemek_fiyat.toInt(),2,"halil_krkn_deneme")
+                Snackbar.make(it, "Ürün Başarıyla Sepete Eklendi",Snackbar.LENGTH_LONG).show()
             }
         }
 

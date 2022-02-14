@@ -3,10 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="foodCartListToolbar"
+            type="String" />
+        <variable
+            name="foodCartListFragment"
+            type="com.example.repast.ui.fragments.FoodCartListFragment" />
+        <variable
+            name="foodCartListAdapter"
+            type="com.example.repast.ui.adapters.FoodCartListAdapter" />
+    </data>
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.CartListFragment">
+        tools:context=".ui.fragments.FoodCartListFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarCartList"
@@ -19,10 +33,12 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Cart List" />
+            app:title="@{foodCartListToolbar}" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCartList"
+            android:id="@+id/recyclerViewFoodCartList"
+            android:adapter="@{foodCartListAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="foodss" type="com.example.repast.data.model.SepetYemekler" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:text="Yemek Adi"
+                    android:text="@{foodss.yemekAdi.toString()}"
                     android:textAlignment="center"
                     android:textColor="@color/DetailFoodTitle"
                     android:textSize="20sp"
@@ -51,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="15.99₺"
+                    android:text="@{foodss.yemekFiyat}"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"

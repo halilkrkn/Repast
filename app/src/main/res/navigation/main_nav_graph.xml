@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_favorite_food" />
     <fragment
         android:id="@+id/cartListFragment"
-        android:name="com.example.repast.ui.fragments.CartListFragment"
+        android:name="com.example.repast.ui.fragments.FoodCartListFragment"
         android:label="fragment_cart_list"
         tools:layout="@layout/fragment_cart_list" />
 </navigation>

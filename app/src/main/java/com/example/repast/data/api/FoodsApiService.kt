@@ -1,8 +1,6 @@
 package com.example.repast.data.api
 
-import com.example.repast.data.model.SepetResponse
-import com.example.repast.data.model.YemekResponse
-import com.example.repast.data.model.Yemekler
+import com.example.repast.data.model.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Field
@@ -24,4 +22,11 @@ interface FoodsApiService {
         @Field("yemek_siparis_adet") yemek_siparis_adet: Int,
         @Field("kullanici_adi") kullanici_adi: String,
     ): Call<SepetResponse>
+
+
+    @POST("yemekler/sepettekiYemekleriGetir.php")
+    @FormUrlEncoded
+    fun postFoodsListCard(
+        @Field("kullanici_adi") kullanici_adi: String,
+    ): Call<CartFoodResponse>
 }
