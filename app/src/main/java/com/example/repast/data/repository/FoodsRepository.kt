@@ -63,6 +63,15 @@ class FoodsRepository @Inject constructor(
         })
     }
 
+    fun deleteFoodsListCard(sepet_yemek_id:Int, kullanici_adi: String){
+        foodsApi.deleteFoodsListCard(sepet_yemek_id, kullanici_adi).enqueue(object : Callback<SepetResponse>{
+            override fun onResponse(call: Call<SepetResponse>?, response: Response<SepetResponse>?) {
+                getAllFoodsListCard(kullanici_adi)
+            }
+            override fun onFailure(call: Call<SepetResponse>?, t: Throwable?) {}
+        })
+    }
+
 
 
 }

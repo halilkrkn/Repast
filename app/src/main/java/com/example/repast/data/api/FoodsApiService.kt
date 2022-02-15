@@ -29,4 +29,11 @@ interface FoodsApiService {
     fun postFoodsListCard(
         @Field("kullanici_adi") kullanici_adi: String,
     ): Call<CartFoodResponse>
+
+    @POST("yemekler/sepettenYemekSil.php")
+    @FormUrlEncoded
+    fun deleteFoodsListCard(
+        @Field("sepet_yemek_id") sepet_yemek_id:Int,
+        @Field("kullanici_adi") kullanici_adi: String,
+    ): Call<SepetResponse>
 }

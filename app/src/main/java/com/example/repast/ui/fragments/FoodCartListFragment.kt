@@ -1,5 +1,6 @@
 package com.example.repast.ui.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import com.example.repast.ui.adapters.FoodListAdapter
 import com.example.repast.ui.viewmodels.FoodCartListViewModel
 import com.example.repast.ui.viewmodels.FoodListViewModel
 import com.example.repast.utils.AppPref
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +39,7 @@ class FoodCartListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cart_list ,container, false)
         binding.foodCartListFragment = this
         binding.foodCartListToolbar = "Food Cart List"
@@ -56,6 +58,38 @@ class FoodCartListFragment : Fragment() {
             binding.recyclerViewFoodCartList.setHasFixedSize(true)
 
         }
+
+        val itemTouchHelperCallback = object: ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+                val foods = adapterFoodCartList.differ.currentList[position]
+
+                Snackbar.make(view!!,"Başarıyla Silinsin Mi? ", Snackbar.LENGTH_SHORT).apply {
+                    setTextColor(Color.WHITE)
+                    setActionTextColor(Color.LTGRAY)
+                    setAction("Evet") {
+                        viewModel.deleteFoodsListCard(foods.sepetYemekId.toInt(),foods.kullaniciAdi)
+                    }
+                    show()
+                }
+            }
+        }
+
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(binding.recyclerViewFoodCartList)
+        }
+
         return binding.root
     }
 

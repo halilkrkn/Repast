@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -31,6 +30,11 @@ class FoodCartListAdapter: RecyclerView.Adapter<FoodCartListAdapter.FoodCartList
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.ic_baseline_hide_image_24)
                     .into(imageViewFoodCartList)
+
+//                itemFoodListCardView.setOnClickListener {
+//                    val action = FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(yemekler)
+//                    Navigation.findNavController(it).navigate(action)
+//                }
             }
         }
     }

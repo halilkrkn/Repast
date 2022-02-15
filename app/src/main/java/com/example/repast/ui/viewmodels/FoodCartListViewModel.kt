@@ -24,4 +24,8 @@ class FoodCartListViewModel @Inject constructor(
     fun getAllFoods(kullanici_adi:String){
         repository.getAllFoodsListCard(kullanici_adi)
     }
+
+    fun deleteFoodsListCard(sepet_yemek_id:Int, kullanici_adi: String){
+        repository.deleteFoodsListCard(sepet_yemek_id,kullanici_adi)
+    }
 }
