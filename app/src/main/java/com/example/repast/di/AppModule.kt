@@ -1,11 +1,14 @@
 package com.example.repast.di
 
+import android.content.Context
 import com.example.repast.BuildConfig
 import com.example.repast.data.api.FoodsApiService
+import com.example.repast.utils.AppPref
 import com.example.repast.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -46,4 +49,8 @@ object AppModule {
     @Provides
     fun provideFoodsApi(retrofit: Retrofit): FoodsApiService =
         retrofit.create(FoodsApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideAppPref(@ApplicationContext context: Context) = AppPref(context)
 }

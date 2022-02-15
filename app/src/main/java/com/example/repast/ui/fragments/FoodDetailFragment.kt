@@ -17,14 +17,23 @@ import com.bumptech.glide.request.RequestListener
 import com.example.repast.R
 import com.example.repast.databinding.FragmentFoodDetailBinding
 import com.example.repast.ui.viewmodels.FoodDetailViewModel
+import com.example.repast.utils.AppPref
 import com.example.repast.utils.Constants
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class FoodDetailFragment : Fragment() {
+    @Inject
+    lateinit var appPref: AppPref
+    private var username:String = ""
     private lateinit var binding: FragmentFoodDetailBinding
     private lateinit var viewModel: FoodDetailViewModel
     private val detailArgs by navArgs<FoodDetailFragmentArgs>()
@@ -32,8 +41,12 @@ class FoodDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFoodDetailBinding.inflate(inflater,container, false)
+        binding = FragmentFoodDetailBinding.inflate(inflater, container, false)
         val foodDetail = detailArgs.yemekler
+
+       GlobalScope.launch(Dispatchers.Main){
+           username = appPref.readUsername()
+       }
 
         binding.apply {
             val imageAdi = "${Constants.IMAGE_URL}${foodDetail.yemek_resim_adi}"
@@ -49,18 +62,17 @@ class FoodDetailFragment : Fragment() {
 
 
             buttonAddToCart.setOnClickListener {
-                viewModel.postAddFoodsCard(foodDetail.yemek_adi,foodDetail.yemek_resim_adi,foodDetail.yemek_fiyat.toInt(),2,"halil_krkn_deneme")
-                Snackbar.make(it, "Ürün Başarıyla Sepete Eklendi",Snackbar.LENGTH_LONG).show()
+                viewModel.postAddFoodsCard( foodDetail.yemek_adi, foodDetail.yemek_resim_adi,foodDetail.yemek_fiyat.toInt(),2,username)
+                Snackbar.make(it, "Ürün Başarıyla Sepete Eklendi", Snackbar.LENGTH_SHORT).show()
             }
         }
-
         return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        val tempViewModel:FoodDetailViewModel by viewModels()
+        val tempViewModel: FoodDetailViewModel by viewModels()
         viewModel = tempViewModel
     }
 }

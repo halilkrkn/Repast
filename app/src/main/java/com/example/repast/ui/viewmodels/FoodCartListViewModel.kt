@@ -14,7 +14,6 @@ class FoodCartListViewModel @Inject constructor(
     var foodCardList = MutableLiveData<List<SepetYemekler>>()
 
     init {
-        getAllFoods("halil_krkn_deneme")
         foodCardList = repository.getFoodsListCard()
     }
 //

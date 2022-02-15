@@ -12,6 +12,7 @@ buildscript {
         roomDatabaseVersion = '2.4.1'
         lifecycleVersion = '2.4.0'
         picassoVersion = '2.71828'
+        dataStoreVersion = '1.0.0'
     }
 
 
