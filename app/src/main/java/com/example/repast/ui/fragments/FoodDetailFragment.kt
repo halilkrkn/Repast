@@ -34,7 +34,7 @@ class FoodDetailFragment : Fragment() {
     @Inject
     lateinit var appPref: AppPref
     private var username: String = ""
-    private var readCount: Int = 0
+    private var readCount: Int = 1
     private var count: Int = 0
     private var totalPrice: Int = 0
     private lateinit var binding: FragmentFoodDetailBinding
