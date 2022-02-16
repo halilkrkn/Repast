@@ -13,11 +13,19 @@ import com.example.repast.R
 import com.example.repast.databinding.FragmentFoodListBinding
 import com.example.repast.ui.adapters.FoodListAdapter
 import com.example.repast.ui.viewmodels.FoodListViewModel
+import com.example.repast.utils.AppPref
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class FoodListFragment : Fragment() {
+    @Inject
+    lateinit var appPref: AppPref
+    private var username: String = ""
     private lateinit var binding: FragmentFoodListBinding
     private lateinit var viewModel:FoodListViewModel
     lateinit var adapterFoodList: FoodListAdapter
@@ -28,14 +36,16 @@ class FoodListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_food_list,container, false)
         binding.foodListFragment = this
         binding.foodListToolBarBaslik = "Food List"
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarFoodList)
 
 
-
+        GlobalScope.launch(Dispatchers.Main) {
+            username = appPref.readUsername()
+            binding.textViewUsername.text = "Hi,${username}"
+        }
 
         // viewmodel içerisinde tanımlanmış olan tidings değişkenini çağırdık.
-        viewModel.foodList.observe(viewLifecycleOwner) {
-            adapterFoodList = FoodListAdapter()
+        viewModel.foodLists.observe(viewLifecycleOwner) {
+            adapterFoodList = FoodListAdapter(viewModel)
             adapterFoodList.differ.submitList(it)
             binding.foodListAdapter = adapterFoodList
             binding.recyclerViewFoodList.setHasFixedSize(true)
@@ -50,5 +60,4 @@ class FoodListFragment : Fragment() {
         val tempViewModel:FoodListViewModel by viewModels()
         viewModel = tempViewModel
     }
-
 }

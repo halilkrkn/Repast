@@ -1,10 +1,13 @@
 package com.example.repast.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.repast.BuildConfig
 import com.example.repast.data.api.FoodsApiService
+import com.example.repast.data.db.FoodsDatabase
 import com.example.repast.utils.AppPref
 import com.example.repast.utils.Constants.Companion.BASE_URL
+import com.example.repast.utils.Constants.Companion.FOODS_DB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,6 +47,24 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
+
+
+    @Singleton
+    @Provides
+    fun provideTidingsDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
+        context,
+        FoodsDatabase::class.java,
+        FOODS_DB
+    )
+        .fallbackToDestructiveMigration()
+        .build()
+
+    @Singleton
+    @Provides
+    fun provideRunDao(db:FoodsDatabase) = db.getFoodsDao()
+
+
+
 
     @Singleton
     @Provides

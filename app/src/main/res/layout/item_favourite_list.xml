@@ -2,6 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="foodss" type="com.example.repast.data.model.Yemekler" />
+    </data>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -9,7 +12,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewFoodList"
+        android:id="@+id/cardViewFoodFavori"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
@@ -23,7 +26,7 @@
             android:layout_marginBottom="7dp">
 
             <ImageView
-                android:id="@+id/imageViewFoodList"
+                android:id="@+id/imageViewFoodFavori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -34,34 +37,34 @@
                 app:srcCompat="@drawable/pizza_resim" />
 
             <TextView
-                android:id="@+id/textViewFoodName"
+                android:id="@+id/textViewFoodFavoriName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Yemek Adi"
+                android:text="@{foodss.yemek_adi.toString()}"
                 android:textAlignment="center"
                 android:textColor="@color/DetailFoodTitle"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/textViewFoodListPrice"
+                app:layout_constraintEnd_toStartOf="@+id/textViewFoodFavoriPrice"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewFoodList" />
+                app:layout_constraintTop_toBottomOf="@+id/imageViewFoodFavori" />
 
             <TextView
-                android:id="@+id/textViewFoodListPrice"
+                android:id="@+id/textViewFoodFavoriPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="15.99₺"
+                android:text="@{foodss.yemek_fiyat.toString()}"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textViewFoodName"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewFoodList" />
+                app:layout_constraintStart_toEndOf="@+id/textViewFoodFavoriName"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewFoodFavori" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,8 @@ import com.example.repast.data.repository.FoodsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -20,19 +22,28 @@ class FoodListViewModel  @Inject constructor(
     val repository: FoodsRepository
 ): ViewModel(){
 
-    var foodList = MutableLiveData<List<Yemekler>>()
+    var foodLists: MutableLiveData<List<Yemekler>> = MutableLiveData()
 
     init {
+        getFoods()
         getAllFoods()
-        foodList = repository.getFoods()
-    }
-//
-//    fun getAllFoods() = viewModelScope.launch(Dispatchers.Main){
-//        foodList.value = repository.getAllFoods()
-//    }
-
-    fun getAllFoods(){
-        repository.getAllFoods()
     }
 
+    fun getFoods(): MutableLiveData<List<Yemekler>>{
+        return foodLists
+    }
+
+    fun getAllFoods() = repository.getAllFoods().enqueue(object: Callback<YemekResponse> {
+        override fun onResponse(call: Call<YemekResponse>, response: Response<YemekResponse>) {
+            val foodList = response.body()?.yemekler
+            foodLists.value = foodList!!
+        }
+        override fun onFailure(call: Call<YemekResponse>, t: Throwable) {}
+    })
+
+    fun insertFoods(foods:Yemekler) = viewModelScope.launch(Dispatchers.IO){
+        repository.insertFood(foods)
+    }
 }
+
+

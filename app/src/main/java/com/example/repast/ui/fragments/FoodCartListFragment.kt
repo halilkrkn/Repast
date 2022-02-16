@@ -49,8 +49,8 @@ class FoodCartListFragment : Fragment() {
         }
 
         // viewmodel içerisinde tanımlanmış olan tidings değişkenini çağırdık.
-        viewModel.getAllFoods(getUsername)
-        viewModel.foodCardList.observe(viewLifecycleOwner) {
+        viewModel.getAllFoodsListCard(getUsername)
+        viewModel.foodListCard.observe(viewLifecycleOwner) {
             Log.e("SepetYemek","$it")
             adapterFoodCartList = FoodCartListAdapter()
             adapterFoodCartList.differ.submitList(it)
@@ -94,6 +94,6 @@ class FoodCartListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getAllFoods(getUsername)
+        viewModel.getAllFoodsListCard(getUsername)
     }
 }

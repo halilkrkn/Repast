@@ -57,7 +57,7 @@
                     app:shapeAppearanceOverlay="@style/circleImageViewStyle" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageViewInsertFavoriFood"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_marginBottom="16dp"

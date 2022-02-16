@@ -2,12 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="foodFavoriToolBarBaslik"
+            type="String" />
+        <variable
+            name="foodFavoriFragment"
+            type="com.example.repast.ui.fragments.FoodFavoriteFragment" />
 
+        <variable
+            name="foodFavoriAdapter"
+            type="com.example.repast.ui.adapters.FoodFavoriteAdapter" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.FavoriteFoodFragment">
+        tools:context=".ui.fragments.FoodFavoriteFragment">
 
 
         <androidx.appcompat.widget.Toolbar
@@ -21,11 +33,14 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Favourite Food" />
+            app:title="@{foodFavoriToolBarBaslik}" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFoodFavori"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:adapter="@{foodFavoriAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
