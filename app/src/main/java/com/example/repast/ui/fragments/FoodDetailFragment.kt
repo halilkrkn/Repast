@@ -33,7 +33,10 @@ import javax.inject.Inject
 class FoodDetailFragment : Fragment() {
     @Inject
     lateinit var appPref: AppPref
-    private var username:String = ""
+    private var username: String = ""
+    private var readCount: Int = 0
+    private var count: Int = 0
+    private var totalPrice: Int = 0
     private lateinit var binding: FragmentFoodDetailBinding
     private lateinit var viewModel: FoodDetailViewModel
     private val detailArgs by navArgs<FoodDetailFragmentArgs>()
@@ -41,12 +44,16 @@ class FoodDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFoodDetailBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
+        binding.foodDetailFragment = this
+        binding.foodDetailToolbar = "Food Detail"
         val foodDetail = detailArgs.yemekler
 
-       GlobalScope.launch(Dispatchers.Main){
-           username = appPref.readUsername()
-       }
+        binding.food = foodDetail
+
+        GlobalScope.launch(Dispatchers.Main) {
+            username = appPref.readUsername()
+        }
 
         binding.apply {
             val imageAdi = "${Constants.IMAGE_URL}${foodDetail.yemek_resim_adi}"
@@ -57,12 +64,47 @@ class FoodDetailFragment : Fragment() {
                 .error(R.drawable.ic_baseline_hide_image_24)
                 .into(imageViewFoodDetail)
 
-            textViewFoodDetailTitle.text = foodDetail.yemek_adi
-            textViewFoodDetailPrice.text = foodDetail.yemek_fiyat
+            buttonPlus.setOnClickListener {
+                count += 1
+                val countPlus = count
+                readCount = countPlus
+                textViewProductNumber.text = countPlus.toString()
+
+                val foodPrice = foodDetail.yemek_fiyat.toInt()
+                totalPrice = foodPrice * readCount
+                textViewFoodDetailPrice.text = totalPrice.toString()
+
+
+            }
+
+
+            buttonMinus.setOnClickListener {
+                if (count <= 0) {
+                    count = 0
+                }else
+                    count -= 1
+                val countMinus = count
+                readCount = countMinus
+                textViewProductNumber.text = countMinus.toString()
+
+                val foodPrice = foodDetail.yemek_fiyat.toInt()
+                totalPrice = foodPrice * readCount
+                textViewFoodDetailPrice.text = totalPrice.toString()
+
+            }
+
+
+
 
 
             buttonAddToCart.setOnClickListener {
-                viewModel.postAddFoodsCard( foodDetail.yemek_adi, foodDetail.yemek_resim_adi,foodDetail.yemek_fiyat.toInt(),2,username)
+                viewModel.postAddFoodsCard(
+                    foodDetail.yemek_adi,
+                    foodDetail.yemek_resim_adi,
+                    foodDetail.yemek_fiyat.toInt(),
+                    readCount,
+                    username
+                )
                 Snackbar.make(it, "Ürün Başarıyla Sepete Eklendi", Snackbar.LENGTH_SHORT).show()
             }
         }
@@ -75,4 +117,5 @@ class FoodDetailFragment : Fragment() {
         val tempViewModel: FoodDetailViewModel by viewModels()
         viewModel = tempViewModel
     }
+
 }
