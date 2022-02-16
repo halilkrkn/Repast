@@ -74,15 +74,7 @@ class FoodCartListFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
                 val foods = adapterFoodCartList.differ.currentList[position]
-
-                Snackbar.make(view!!,"Başarıyla Silinsin Mi? ", Snackbar.LENGTH_SHORT).apply {
-                    setTextColor(Color.WHITE)
-                    setActionTextColor(Color.LTGRAY)
-                    setAction("Evet") {
-                        viewModel.deleteFoodsListCard(foods.sepetYemekId.toInt(),foods.kullaniciAdi)
-                    }
-                    show()
-                }
+                viewModel.deleteFoodsListCard(foods.sepetYemekId.toInt(),foods.kullaniciAdi)
             }
         }
 

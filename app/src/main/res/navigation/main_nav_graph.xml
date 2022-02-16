@@ -31,6 +31,9 @@
         <argument
             android:name="yemekler"
             app:argType="com.example.repast.data.model.Yemekler" />
+        <action
+            android:id="@+id/action_foodDetailFragment_to_cartListFragment"
+            app:destination="@id/cartListFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFoodFragment"

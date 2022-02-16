@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -73,15 +75,12 @@ class FoodDetailFragment : Fragment() {
                 val foodPrice = foodDetail.yemek_fiyat.toInt()
                 totalPrice = foodPrice * readCount
                 textViewFoodDetailPrice.text = totalPrice.toString()
-
-
             }
-
 
             buttonMinus.setOnClickListener {
                 if (count <= 0) {
                     count = 0
-                }else
+                } else
                     count -= 1
                 val countMinus = count
                 readCount = countMinus
@@ -93,11 +92,7 @@ class FoodDetailFragment : Fragment() {
 
             }
 
-
-
-
-
-            buttonAddToCart.setOnClickListener {
+            buttonAddToCart.setOnClickListener { view ->
                 viewModel.postAddFoodsCard(
                     foodDetail.yemek_adi,
                     foodDetail.yemek_resim_adi,
@@ -105,8 +100,16 @@ class FoodDetailFragment : Fragment() {
                     readCount,
                     username
                 )
-                Snackbar.make(it, "Ürün Başarıyla Sepete Eklendi", Snackbar.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Ürün Başarıyla Sepete Eklendi", Toast.LENGTH_SHORT).show()
+//                Snackbar.make(view, "Ürün Başarıyla Sepete Eklendi", Snackbar.LENGTH_SHORT)
+//                    .setAction("GIT"){
+//                        Navigation.findNavController(it)
+//                            .navigate(R.id.action_foodDetailFragment_to_cartListFragment)
+//                    }
+//                    .show()
             }
+            
+
         }
         return binding.root
     }

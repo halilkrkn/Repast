@@ -56,6 +56,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/textViewFoodName"
                     app:shapeAppearanceOverlay="@style/circleImageViewStyle" />
 
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewFoodList"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.956"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_twotone_favorite_242" />
+
                 <TextView
                     android:id="@+id/textViewFoodListPrice"
                     android:layout_width="wrap_content"
