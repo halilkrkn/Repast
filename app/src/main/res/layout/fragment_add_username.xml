@@ -16,17 +16,17 @@
             android:background="@drawable/repast"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/buttonGoToFoodList"
-            android:layout_width="161dp"
+            android:layout_width="140dp"
             android:layout_height="42dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="52dp"
             android:background="@drawable/text_input_edit_setup"
             android:text="Go To Food List"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -37,19 +37,19 @@
 
         <EditText
             android:id="@+id/editTextTextUsername"
-            android:layout_width="143dp"
+            android:layout_width="140dp"
             android:layout_height="42dp"
-            android:layout_marginBottom="44dp"
+            android:layout_marginBottom="52dp"
             android:background="@drawable/text_input_edit_setup"
+            android:gravity="center"
             android:hint="Username"
             android:inputType="textPersonName"
-            android:paddingLeft="35dp"
             android:textColor="#5D6564"
             android:textColorHighlight="@color/white"
             android:textColorHint="#5D6564"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonGoToFoodList"
-            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintHorizontal_bias="0.686"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

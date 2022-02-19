@@ -70,6 +70,7 @@ class FoodFavoriteFragment : Fragment(){
                 val foods = adapterFoodFavori.differ.currentList[position]
                 viewModel.deleteFood(foods)
                 Snackbar.make(view!!, "Ürün Silindi", Snackbar.LENGTH_LONG).apply {
+
                     setTextColor(Color.WHITE)
                     setActionTextColor(Color.LTGRAY)
                     setAction("GERİ AL") {
