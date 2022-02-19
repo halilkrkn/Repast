@@ -48,7 +48,6 @@ class FoodDetailFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
         binding.foodDetailFragment = this
-        binding.foodDetailToolbar = "Food Detail"
         val foodDetail = detailArgs.yemekler
 
         binding.food = foodDetail

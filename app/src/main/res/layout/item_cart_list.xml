@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/mainColor"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            app:cardBackgroundColor="@color/usernameButtonColor"
+            app:cardBackgroundColor="@color/mainColor"
             app:cardCornerRadius="15dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,14 +28,17 @@
 
                 <ImageView
                     android:id="@+id/imageViewFoodCartList"
-                    android:layout_width="182dp"
-                    android:layout_height="128dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="4dp"
+                    android:background="@drawable/detail_card"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/pizza_resim" />
+
 
                 <TextView
                     android:id="@+id/textViewCartListFoodName"
@@ -44,9 +48,10 @@
                     android:text="@{foodss.yemekAdi.toString()}"
                     android:textAlignment="center"
                     android:textColor="@color/DetailFoodTitle"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.45"
                     app:layout_constraintStart_toEndOf="@+id/imageViewFoodCartList"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,16 +59,31 @@
                     android:id="@+id/textViewCartListPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="20dp"
                     android:text="@{foodss.yemekFiyat}"
                     android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textColor="@color/textColor1"
+                    android:textSize="24sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewCartListPrice1"
+                    app:layout_constraintHorizontal_bias="0.879"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewFoodCartList" />
+
+                <TextView
+                    android:id="@+id/textViewCartListPrice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="21dp"
+                    android:text="₺"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColor1"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.503"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewFoodCartList"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewCartListFoodName" />
+                    app:layout_constraintHorizontal_bias="0.588"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewFoodCartList" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

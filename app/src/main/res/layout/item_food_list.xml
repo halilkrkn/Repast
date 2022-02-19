@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/mainColor"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -23,19 +24,20 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/mainColor">
+                android:background="@color/white">
 
 
                 <TextView
                     android:id="@+id/textViewFoodName"
-                    android:layout_width="139dp"
-                    android:layout_height="49dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:lines="2"
                     android:paddingStart="7dp"
                     android:text="@{foodss.yemek_adi.toString()}"
                     android:textColor="@color/DetailFoodTitle"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/imageViewFoodList"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -46,61 +48,64 @@
                 <ImageView
                     android:id="@+id/imageViewFoodList"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="180dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_foreground"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewFoodName"
                     app:shapeAppearanceOverlay="@style/circleImageViewStyle" />
 
-                <ImageView
-                    android:id="@+id/imageViewInsertFavoriFood"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginBottom="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewFoodList"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.956"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/ic_twotone_favorite_242" />
-
-                <TextView
-                    android:id="@+id/textViewFoodListPrice"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="76dp"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:paddingStart="7dp"
-                    android:text="@{foodss.yemek_fiyat.toString()}"
-                    android:textColor="@color/DetailFoodCurrency"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewFoodList"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintStart_toStartOf="parent">
 
-                <TextView
-                    android:id="@+id/textViewFoodListTL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|center"
-                    android:lines="2"
-                    android:paddingStart="7dp"
-                    android:text="₺"
-                    android:textColor="@color/DetailFoodCurrency"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/textViewFoodListPrice"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewFoodList"
-                    app:layout_constraintVertical_bias="0.0" />
+                    <ImageView
+                        android:id="@+id/imageViewInsertFavoriFood"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_twotone_favorite_242" />
 
+                    <TextView
+                        android:id="@+id/textViewFoodListPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:gravity="right|center"
+                        android:lines="1"
+                        android:text="@{foodss.yemek_fiyat.toString()}"
+                        android:textColor="@color/DetailFoodCurrency"
+                        android:textDirection="rtl"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodListTL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right|center"
+                        android:lines="1"
+                        android:text="₺"
+                        android:textColor="@color/DetailFoodCurrency"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

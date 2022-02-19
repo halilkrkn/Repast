@@ -27,8 +27,13 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarFoodList"
             android:layout_width="0dp"
+            app:subtitle="Welcome Back"
+            android:paddingTop="20dp"
+            app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
+            app:titleTextColor="@color/textColor1"
+            app:subtitleTextColor="@color/textColor1"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@color/mainColor"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,50 +47,19 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/mainColor"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarFoodList">
 
-            <TextView
-                android:id="@+id/textViewUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Hi, Halil"
-                android:textAlignment="center"
-                android:textColor="@color/buttonColor"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.109" />
-
-            <TextView
-                android:id="@+id/textViewNickName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:text="Order - Eaten"
-                android:textAlignment="center"
-                android:textColor="@color/DetailFoodTitle"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.109" />
-
             <EditText
                 android:id="@+id/editTextSearchBar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="26dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="3dp"
                 android:background="@drawable/search_bar"
@@ -97,15 +71,13 @@
                 android:paddingStart="10dp"
                 android:textSize="14sp"
                 android:textStyle="italic" />
-
-
         </LinearLayout>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewFoodList"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/mainColor"
             android:adapter="@{foodListAdapter}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

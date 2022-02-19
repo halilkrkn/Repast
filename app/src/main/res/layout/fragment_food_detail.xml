@@ -16,32 +16,29 @@
     </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/foodListItemBackground"
         android:orientation="vertical"
         tools:context=".ui.fragments.FoodDetailFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarFoodDetail"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Food Detail" />
+            android:layout_height="350dp"
+            android:background="@color/foodListItemBackground">
 
+            <ImageView
+                android:id="@+id/imageViewFoodDetail"
+                android:layout_width="match_parent"
+                android:layout_height="347dp"
+                android:padding="0dp" />
+
+        </RelativeLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="533dp"
-            android:layout_margin="5dp"
-            android:layout_marginTop="35dp"
-            android:clickable="true"
-            app:cardCornerRadius="15dp">
+            android:layout_height="match_parent"
+            app:cardCornerRadius="30dp"
+            android:background="@drawable/detail_card">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -50,46 +47,38 @@
 
                 <TextView
                     android:id="@+id/textViewFoodDetailTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
                     android:gravity="center"
+                    android:lines="3"
                     android:text="@{food.yemek_adi}"
                     android:textColor="@color/DetailFoodTitle"
-                    android:textSize="25sp"
+                    android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageViewFoodDetail"
-                    android:layout_width="0dp"
-                    android:layout_height="313dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetailTitle" />
-
 
                 <ImageView
                     android:id="@+id/buttonMinus"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:layout_marginTop="53dp"
+                    android:layout_marginTop="28dp"
                     android:src="@drawable/minus"
                     app:layout_constraintEnd_toStartOf="@+id/textViewProductNumber"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewFoodDetail" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetailTitle" />
 
                 <TextView
                     android:id="@+id/textViewProductNumber"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="53dp"
+                    android:layout_marginTop="28dp"
                     android:layout_marginEnd="32dp"
                     android:gravity="center"
                     android:text="1"
@@ -99,60 +88,64 @@
                     app:layout_constraintEnd_toStartOf="@+id/buttonPlus"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/buttonMinus"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewFoodDetail" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetailTitle" />
 
                 <ImageView
                     android:id="@+id/buttonPlus"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:layout_marginTop="53dp"
+                    android:layout_marginTop="28dp"
                     android:src="@drawable/plus"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textViewProductNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewFoodDetail" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetailTitle" />
 
                 <TextView
                     android:id="@+id/textViewFoodDetailPriceIcon"
                     android:layout_width="45dp"
                     android:layout_height="43dp"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="72dp"
+                    android:gravity="left|center"
                     android:text="₺"
                     android:textColor="@color/DetailFoodTitle"
-                    android:textSize="28sp"
+                    android:textDirection="ltr"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textViewFoodDetailPrice"
-                    app:layout_constraintTop_toTopOf="@+id/textViewFoodDetailPrice"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.601"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewFoodDetailPrice"
-                    android:layout_width="69dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="43dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
+                    android:layout_marginBottom="74dp"
+                    android:gravity="right|center"
+                    android:lines="1"
                     android:text="@{food.yemek_fiyat}"
                     android:textColor="@color/DetailFoodCurrency"
-                    android:textSize="24sp"
+                    android:textDirection="rtl"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/textViewFoodDetailPriceIcon"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
+                    app:layout_constraintHorizontal_bias="0.99"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
                     android:id="@+id/buttonAddToCart"
                     android:layout_width="186dp"
                     android:layout_height="50dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/text_input_edit_setup"
+                    android:drawableStart="@drawable/ic_twotone_add_shopping_cart_24"
                     android:text="Add To Cart"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.831"
-                    app:layout_constraintStart_toEndOf="@+id/textViewFoodDetailPriceIcon" />
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewFoodDetailPriceIcon" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

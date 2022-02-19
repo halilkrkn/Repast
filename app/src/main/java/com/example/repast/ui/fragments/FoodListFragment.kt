@@ -35,12 +35,10 @@ class FoodListFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_food_list,container, false)
         binding.foodListFragment = this
-        binding.foodListToolBarBaslik = "Food List"
-
 
         GlobalScope.launch(Dispatchers.Main) {
             username = appPref.readUsername()
-            binding.textViewUsername.text = "Hi,${username}"
+            binding.foodListToolBarBaslik = "Hello ${username},"
         }
 
         // viewmodel içerisinde tanımlanmış olan tidings değişkenini çağırdık.
