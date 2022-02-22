@@ -18,7 +18,7 @@ interface FoodsDao {
     fun getAllFoods(): LiveData<List<Yemekler>>
 
     //Saved Sayfası içerisindeki searh işlemi yapabilmemiz için database'e sorgu yazdık.
-    @Query("SELECT * FROM foods WHERE yemek_adi LIKE '%' || :searchQuery || '%' ORDER BY yemek_adi DESC")
+    @Query("SELECT * FROM foods WHERE yemek_adi like :searchQuery||'%'")
     fun searchSavedName(searchQuery: String): Flow<List<Yemekler>>
     
 }

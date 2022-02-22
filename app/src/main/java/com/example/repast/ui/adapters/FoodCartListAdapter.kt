@@ -9,10 +9,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.repast.R
 import com.example.repast.data.model.SepetYemekler
+import com.example.repast.data.model.Yemekler
 import com.example.repast.databinding.ItemCartListBinding
+import com.example.repast.ui.viewmodels.FoodCartListViewModel
 import com.example.repast.utils.Constants
 
-class FoodCartListAdapter: RecyclerView.Adapter<FoodCartListAdapter.FoodCartListViewHolder>() {
+class FoodCartListAdapter(val viewModel: FoodCartListViewModel): RecyclerView.Adapter<FoodCartListAdapter.FoodCartListViewHolder>() {
 
     // Bu class sayesinde RecyclerView mantığı gören PagingDataAdapterı için gerekli tüm aşamalar gerçekleştirip ViewBinding kullanıldığı için ItemBreakingTidingsBinding.xml ine bind ettik yani bağladık.
     // Sonra ise o fragment içerisinde oluşturduğumuz özelliklere tanımlamalar verdik ve UI da göstermesini istedik.

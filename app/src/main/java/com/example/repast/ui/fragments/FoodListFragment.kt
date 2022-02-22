@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.repast.R
 import com.example.repast.databinding.FragmentFoodListBinding
 import com.example.repast.ui.adapters.FoodListAdapter
@@ -48,6 +50,13 @@ class FoodListFragment : Fragment() {
             binding.foodListAdapter = adapterFoodList
             binding.recyclerViewFoodList.setHasFixedSize(true)
         }
+
+
+        val callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
 
         return binding.root
     }

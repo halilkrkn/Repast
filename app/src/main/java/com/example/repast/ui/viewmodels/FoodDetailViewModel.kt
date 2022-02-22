@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.repast.data.model.SepetResponse
+import com.example.repast.data.model.SepetYemekler
 import com.example.repast.data.model.Yemekler
 import com.example.repast.data.repository.FoodsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

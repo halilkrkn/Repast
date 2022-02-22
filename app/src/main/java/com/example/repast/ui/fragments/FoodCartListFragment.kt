@@ -52,7 +52,7 @@ class FoodCartListFragment : Fragment() {
         viewModel.getAllFoodsListCard(getUsername)
         viewModel.foodListCard.observe(viewLifecycleOwner) {
             Log.e("SepetYemek","$it")
-            adapterFoodCartList = FoodCartListAdapter()
+            adapterFoodCartList = FoodCartListAdapter(viewModel)
             adapterFoodCartList.differ.submitList(it)
             binding.foodCartListAdapter = adapterFoodCartList
             binding.recyclerViewFoodCartList.setHasFixedSize(true)
@@ -75,6 +75,7 @@ class FoodCartListFragment : Fragment() {
                 val position = viewHolder.bindingAdapterPosition
                 val foods = adapterFoodCartList.differ.currentList[position]
                 viewModel.deleteFoodsListCard(foods.sepetYemekId.toInt(),foods.kullaniciAdi)
+                viewModel.getAllFoodsListCard(getUsername)
             }
         }
 

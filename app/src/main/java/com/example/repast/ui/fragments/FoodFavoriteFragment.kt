@@ -100,16 +100,13 @@ class FoodFavoriteFragment : Fragment(){
 
         searchView.queryHint = "Find Saved Foods..."
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null){
-                    binding.recyclerViewFoodFavori.scrollToPosition(0)
-                    viewModel.searchFavoriFood(query)
-                    searchView.clearFocus()
-                }
+            override fun onQueryTextSubmit(query: String): Boolean {
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(newText: String): Boolean {
+                binding.recyclerViewFoodFavori.scrollToPosition(0)
+                viewModel.searchFavoriFood(newText)
                 return true
             }
 
@@ -122,5 +119,6 @@ class FoodFavoriteFragment : Fragment(){
         val tempViewModel: FoodFavoriteViewModel by viewModels()
         viewModel = tempViewModel
     }
+
 
 }

@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.repast">
 
-    <uses-permission android:name="android.permission.INTERNET"/>    <application
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
         android:allowBackup="true"
         android:name=".FoodsApplication"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/repast_delivery"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/repast_delivery_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Repast"

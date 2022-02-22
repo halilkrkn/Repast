@@ -29,4 +29,6 @@ data class Yemekler(
     @Expose
     val yemek_resim_adi: String,
 
-    ) : Parcelable
+    ) : Parcelable{
+        var count = 0
+    }

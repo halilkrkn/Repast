@@ -8,15 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.example.repast.R
+import com.example.repast.data.model.Yemekler
 import com.example.repast.databinding.FragmentFoodDetailBinding
 import com.example.repast.ui.viewmodels.FoodDetailViewModel
 import com.example.repast.utils.AppPref
@@ -100,16 +104,16 @@ class FoodDetailFragment : Fragment() {
                     username
                 )
                 Toast.makeText(requireContext(), "Ürün Başarıyla Sepete Eklendi", Toast.LENGTH_SHORT).show()
-//                Snackbar.make(view, "Ürün Başarıyla Sepete Eklendi", Snackbar.LENGTH_SHORT)
-//                    .setAction("GIT"){
-//                        Navigation.findNavController(it)
-//                            .navigate(R.id.action_foodDetailFragment_to_cartListFragment)
-//                    }
-//                    .show()
             }
-            
-
         }
+        val gecisAnasayfa = FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodListFragment()
+        val callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+
+                findNavController().navigate(gecisAnasayfa)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
         return binding.root
     }
 

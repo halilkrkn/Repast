@@ -1,8 +1,13 @@
 package com.example.repast.data.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import javax.inject.Singleton
 
+
+@Parcelize
 data class SepetYemekler(
     @SerializedName("kullanici_adi")
     val kullaniciAdi: String,
@@ -16,4 +21,6 @@ data class SepetYemekler(
     val yemekResimAdi: String,
     @SerializedName("yemek_siparis_adet")
     val yemekSiparisAdet: String
-)
+): Parcelable{
+    var count = 0
+}

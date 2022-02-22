@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.repast.data.model.CartFoodResponse
 import com.example.repast.data.model.SepetResponse
 import com.example.repast.data.model.SepetYemekler
+import com.example.repast.data.model.Yemekler
 import com.example.repast.data.repository.FoodsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -19,7 +20,7 @@ class FoodCartListViewModel @Inject constructor(
 ):ViewModel(){
     var foodListCard: MutableLiveData<List<SepetYemekler>> = MutableLiveData()
 
-
+/*
     init {
         getFoodsListCard()
     }
@@ -27,8 +28,9 @@ class FoodCartListViewModel @Inject constructor(
 
     fun getFoodsListCard(): MutableLiveData<List<SepetYemekler>>{
         return foodListCard
-    }
+    }*/
 
+    // Sepete Eklenen Ürünleri kullanıcı adına göre Sepette Listelemek için
     fun getAllFoodsListCard(kullanici_adi:String) = repository.getAllFoodsListCard(kullanici_adi).enqueue(object: Callback<CartFoodResponse>{
         override fun onResponse(
             call: Call<CartFoodResponse>,
@@ -36,6 +38,7 @@ class FoodCartListViewModel @Inject constructor(
         ) {
             val response = response.body()
             foodListCard.value = response?.sepetYemekler
+
         }
 
         override fun onFailure(call: Call<CartFoodResponse>, t: Throwable) {
@@ -44,7 +47,7 @@ class FoodCartListViewModel @Inject constructor(
 
     })
 
-
+    // Sepetteki ürünleri sepetteki yemek id ve kullanıcı adına göre sepetten silmek için
     fun deleteFoodsListCard(sepet_yemek_id:Int, kullanici_adi: String){
         repository.deleteFoodsListCard(sepet_yemek_id,kullanici_adi).enqueue(object :
             Callback<SepetResponse> {
